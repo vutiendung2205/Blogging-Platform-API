@@ -22,18 +22,18 @@ export class PostsController {
   }
 
   @Get('list')
-  findAll(@Param('id') id: string) {
+  findAll() {
     return this.postsService.findAll();
-  }
-
-  @Get()
-  search(@Query('term') key: string) {
-    return this.postsService.search(key);
   }
 
   @Post()
   async create(@Body() createPostDto: CreatePostDto) {
     return await this.postsService.create(createPostDto);
+  }
+
+  @Get()
+  search(@Query('term') key: string) {
+    return this.postsService.search(key);
   }
 
   @Delete(':id')

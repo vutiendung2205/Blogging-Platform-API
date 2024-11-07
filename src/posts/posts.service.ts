@@ -26,11 +26,17 @@ export class PostsService {
   }
 
   findById(id: string): Promise<Post> {
+    console.log('🚀 ~ PostsService ~ findById ~ id:', id);
     return this.findOne({ id: id });
   }
 
-  findOne(param: any): Promise<Post> {
-    return this.postRepository.findOne(param);
+  async findOne(param: any): Promise<Post> {
+    console.log('🚀 ~ PostsService ~ findOne ~ param:', param);
+    const findPost = await this.postRepository.findOneBy(param);
+    console.log('🚀 ~ PostsService ~ findOne ~ findPost:', findPost);
+    return await this.postRepository.findOneBy(param).catch((reason) => {
+      throw new HttpException('Post not found', HttpStatus.NOT_FOUND);
+    });
   }
 
   async update(id: string, updatePostDto: UpdatePostDto) {
@@ -48,10 +54,14 @@ export class PostsService {
   }
 
   search(key: string) {
+    if (!key) {
+      return;
+    }
     return this.postRepository
       .createQueryBuilder('post')
       .where('post.title LIKE :title', { title: `%${key}%` })
-      .orWhere('post.category IN :category', { category: key })
-      .orWhere('JSON_CONTAINS(post.tags, :tags)', { tags: `"${key}"` });
+      .orWhere('post.category = :category', { category: key })
+      .orWhere('CONCAT(",", post.tags, ",") LIKE :tag', { tag: `%,${key},%` })
+      .getMany();
   }
 }
