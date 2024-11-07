@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -71,19 +70,13 @@ Check out a few resources that may come in handy when working with NestJS:
 - To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
 - Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 =======
 # Blogging-Platform-API
->>>>>>> main
+
+A Blogging Platform API built with NestJS, using MySQL as the database. This API provides endpoints for managing blog posts, categories, and tags.
+
+Features
+- CRUD operations for blog posts, categories, and tags.
+- Database migrations using TypeORM.
+
+url: https://roadmap.sh/projects/blogging-platform-api
